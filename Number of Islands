@@ -1,0 +1,47 @@
+import java.util.*;
+ class Main
+{
+  public static void island(int[][]arr,int i,int j,int m,int n)
+  {
+    if(i>=0 && i<m && j>=0 && j<n && arr[i][j]==1)
+    {
+      arr[i][j]=0;
+      island(arr,i+1,j,m,n);
+      island(arr,i,j+1,m,n);
+      island(arr,i+1,j+1,m,n);
+      island(arr,i-1,j,m,n);
+      island(arr,i,j-1,m,n);
+      island(arr,i-1,j-1,m,n);
+      island(arr,i+1,j-1,m,n);
+      island(arr,i-1,j+1,m,n);
+    }
+  }
+  public static void main(String args[])
+  {
+    Scanner sc=new Scanner(System.in);
+  	int n=sc.nextInt();
+    int m=sc.nextInt();
+    int noi[][]=new int[m][n];
+    for(int i=0;i<m;i++)
+    {
+    for(int j=0;j<n;j++)
+    {
+      noi[i][j]=sc.nextInt();
+    }
+    }
+    int c=0;
+    
+    for(int i=0;i<m;i++)
+    {
+    for(int j=0;j<n;j++)
+    {
+      if(noi[i][j]==1){
+      island(noi,i,j,m,n);
+      	c++;
+      }    }
+      
+    }
+    System.out.println(c);
+    
+  }
+}
